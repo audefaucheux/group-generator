@@ -3,7 +3,7 @@ import User from "./User";
 import AddUser from "./AddUser";
 
 const UsersList = ({ users, setUsers }) => {
-  const handleClickDelete = id => {
+  const handleClickDelete = (id) => {
     setUsers(users.filter((user, index) => index !== id));
   };
 
@@ -12,6 +12,7 @@ const UsersList = ({ users, setUsers }) => {
       {users.map((user, index) => (
         <User
           key={index}
+          id={index}
           handleClickDelete={() => handleClickDelete(index)}
           user={user}
         />
