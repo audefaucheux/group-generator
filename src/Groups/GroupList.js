@@ -24,16 +24,14 @@ const GroupList = ({ users }) => {
     if (groupSize < users.length && groupSize !== 0) {
       const currentUsers = [...users];
       const finalGroups = [];
-      const totalGroups = Math.ceil(users.length/groupSize);
-
-      console.log(totalGroups);
+      const totalGroups = Math.ceil(users.length / groupSize);
 
       for (let i = 0; i < totalGroups; i++) {
-        const groupI = [];
-        groupI.push(users.splice(0, 2));
-        finalGroups.push(groupI);
-        currentUsers.splice(0, 2);
+        finalGroups.push(users.splice(0, groupSize));
+        currentUsers.splice(0, groupSize);
       }
+
+      setGroups(finalGroups);
     } else {
       alert("something went wrong");
     }
@@ -57,6 +55,9 @@ const GroupList = ({ users }) => {
         </label>
         <input type="submit" value="Submit" />
       </form>
+      {groups.map((group, index) => (
+        <Group key={index} id={index + 1} group={group} />
+      ))}
     </div>
   );
 };
