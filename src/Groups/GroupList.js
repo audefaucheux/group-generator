@@ -22,13 +22,14 @@ const GroupList = ({ users }) => {
 
   const groupUsers = (users, groupSize) => {
     if (groupSize < users.length && groupSize !== 0) {
-      const currentUsers = [...users];
+      const shuffledUsers = shuffleUsers(users);
+      const remainingUsers = [...shuffledUsers]
       const finalGroups = [];
       const totalGroups = Math.ceil(users.length / groupSize);
 
       for (let i = 0; i < totalGroups; i++) {
-        finalGroups.push(users.splice(0, groupSize));
-        currentUsers.splice(0, groupSize);
+        finalGroups.push(shuffledUsers.splice(0, groupSize ));
+        remainingUsers.splice(0, groupSize);
       }
 
       setGroups(finalGroups);
