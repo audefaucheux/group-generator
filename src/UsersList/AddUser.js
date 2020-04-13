@@ -3,23 +3,27 @@ import React, { useState } from "react";
 const AddUser = ({ users, setUsers }) => {
   const [newUser, setNewUser] = useState("");
 
-  const handleChange = event => {
+  const handleChange = (event) => {
     setNewUser(event.target.value);
   };
 
-  const handleSubmit = event => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    setUsers([...users, newUser]);
-    setNewUser("");
+    if (newUser !== "") {
+      setUsers([...users, newUser]);
+      setNewUser("");
+    }
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <label>
-        Name:
-        <input type="text" value={newUser} onChange={handleChange} />
-      </label>
-      <input type="submit" value="Submit" />
+      <input
+        type="text"
+        value={newUser}
+        onChange={handleChange}
+        placeholder="Add User"
+      />
+      <input type="submit" value="Submit" data-testid="add-user-button" />
     </form>
   );
 };
