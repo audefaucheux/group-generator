@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Group from "./Group";
 
 const GroupList = ({ users }) => {
-  const [groupSize, setGroupSize] = useState(0);
+  const [groupSize, setGroupSize] = useState(1);
   const [groups, setGroups] = useState([]);
 
   const getRadomNumber = (max) => Math.floor(Math.random() * Math.floor(max));
@@ -21,7 +21,7 @@ const GroupList = ({ users }) => {
   };
 
   const groupUsers = (users, groupSize) => {
-    if (groupSize < users.length && groupSize !== 0) {
+    if (groupSize < users.length && groupSize >= 1) {
       const shuffledUsers = shuffleUsers(users);
       const remainingUsers = [...shuffledUsers]
       const finalGroups = [];
@@ -34,7 +34,7 @@ const GroupList = ({ users }) => {
 
       setGroups(finalGroups);
     } else {
-      alert("something went wrong");
+      alert("Group Size must be smaller than the total users");
     }
   };
 
@@ -52,7 +52,7 @@ const GroupList = ({ users }) => {
       <form onSubmit={handleSubmit}>
         <label>
           Group Size:
-          <input type="number" value={groupSize} onChange={handleChange} />
+          <input type="number" min={1} value={groupSize} onChange={handleChange} />
         </label>
         <input type="submit" value="Submit" />
       </form>

@@ -8,7 +8,7 @@ const App = () => {
 
   return (
     <div>
-      Group Generator
+      <h1>Group Generator</h1>
       <div>
         <UsersList {...{ users, setUsers }} />
         <br/>
