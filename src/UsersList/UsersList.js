@@ -9,6 +9,7 @@ const UsersList = ({ users, setUsers }) => {
 
   return (
     <div>
+      Total users : {users.length}
       {users.map((user, index) => (
         <User
           key={index}

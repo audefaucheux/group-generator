@@ -1,19 +1,14 @@
 import React from "react";
-import { render, fireEvent, cleanup } from "@testing-library/react";
+import { render, cleanup } from "@testing-library/react";
 import UsersList from "../UsersList";
-
-const UsersStub = ["Sam", "Raph", "Jamie"];
+import { UsersStub } from "../../mocks/UsersStub";
 
 afterEach(cleanup);
 
 test("renders list of users", () => {
   const mockSetUsers = jest.fn();
   const { getByText } = render(
-    <UsersList
-      id={0}
-      users={UsersStub}
-      setUsers={mockSetUsers}
-    />
+    <UsersList id={0} users={UsersStub} setUsers={mockSetUsers} />
   );
   expect(getByText(UsersStub[0])).toBeTruthy();
   expect(getByText(UsersStub[1])).toBeTruthy();
