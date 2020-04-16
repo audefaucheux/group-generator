@@ -23,12 +23,12 @@ const GroupList = ({ users }) => {
   const groupUsers = (users, groupSize) => {
     if (groupSize < users.length && groupSize >= 1) {
       const shuffledUsers = shuffleUsers(users);
-      const remainingUsers = [...shuffledUsers]
+      const remainingUsers = [...shuffledUsers];
       const finalGroups = [];
       const totalGroups = Math.ceil(users.length / groupSize);
 
       for (let i = 0; i < totalGroups; i++) {
-        finalGroups.push(shuffledUsers.splice(0, groupSize ));
+        finalGroups.push(shuffledUsers.splice(0, groupSize));
         remainingUsers.splice(0, groupSize);
       }
 
@@ -52,7 +52,12 @@ const GroupList = ({ users }) => {
       <form onSubmit={handleSubmit}>
         <label>
           Group Size:
-          <input type="number" min={1} value={groupSize} onChange={handleChange} />
+          <input
+            type="number"
+            min={1}
+            value={groupSize}
+            onChange={handleChange}
+          />
         </label>
         <input type="submit" value="Submit" />
       </form>

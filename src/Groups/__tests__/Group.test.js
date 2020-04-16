@@ -9,7 +9,7 @@ describe("<Group />", () => {
 
   it("renders users from the group", () => {
     expect(getByText(groupStub[0])).toBeTruthy();
-    console.log(getByText(groupStub[0]).getAttribute("key"))//.toHaveAttribute("key", 0);
+    console.log(getByText(groupStub[0]).getAttribute("key")); //.toHaveAttribute("key", 0);
     // expect(getByText(groupStub[0])).toHaveAttribute("key", '0');
 
     expect(getByText(groupStub[1])).toBeTruthy();

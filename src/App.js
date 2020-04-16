@@ -11,7 +11,7 @@ const App = () => {
       <h1>Group Generator</h1>
       <div>
         <UsersList {...{ users, setUsers }} />
-        <br/>
+        <br />
         <GroupList {...{ users }} />
       </div>
     </div>

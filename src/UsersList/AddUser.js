@@ -4,7 +4,7 @@ const AddUser = ({ users, setUsers }) => {
   const [newUser, setNewUser] = useState("");
 
   const handleChange = (event) => {
-      setNewUser(event.target.value);
+    setNewUser(event.target.value);
   };
 
   const handleSubmit = (event) => {
