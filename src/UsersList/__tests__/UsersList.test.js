@@ -11,7 +11,7 @@ describe("<UsersList />", () => {
     <UsersList id={0} users={usersStub} setUsers={mockSetUsers} />
   );
 
-  it("renders list of users", () => {
+  test("renders list of users", () => {
     expect(getByText(usersStub[0])).toBeTruthy();
     expect(getByText(usersStub[1])).toBeTruthy();
     expect(getByText(usersStub[2])).toBeTruthy();
