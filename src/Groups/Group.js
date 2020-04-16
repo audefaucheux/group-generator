@@ -1,12 +1,13 @@
 import React from "react";
+import GroupMember from "./GroupMember";
 
 const Group = ({ id, group }) => {
   return (
     <div>
-      Group {id}:
+      {`Group ${id}:`}
       <ul>
         {group.map((user, index) => (
-          <li key={index}>{user}</li>
+          <GroupMember key={index} user={user} />
         ))}
       </ul>
     </div>
