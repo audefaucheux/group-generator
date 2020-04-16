@@ -1,8 +1,8 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import Group from "../Group";
 
-const groupStub = ["John", "Sam"];
+import Group from "../Group";
+import { groupStub } from "../../mocks/GroupStub";
 
 describe("<Group />", () => {
   const { getByText } = render(<Group id="0" group={groupStub} />);
