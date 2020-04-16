@@ -53,8 +53,8 @@ const GroupList = ({ users }) => {
         <label>
           Group Size:
           <input
-            type="number"
-            min={1}
+            data-testid="group-size-input"
+            type="text"
             value={groupSize}
             onChange={handleChange}
           />
