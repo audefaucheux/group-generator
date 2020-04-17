@@ -4,6 +4,7 @@ import Group from "./Group";
 const GroupList = ({ users }) => {
   const [groupSize, setGroupSize] = useState(1);
   const [groups, setGroups] = useState([]);
+  const [errorMessage, setErrorMessage] = useState(undefined);
 
   const getRadomNumber = (max) => Math.floor(Math.random() * Math.floor(max));
 
@@ -33,8 +34,9 @@ const GroupList = ({ users }) => {
       }
 
       setGroups(finalGroups);
+      setErrorMessage(undefined);
     } else {
-      alert("Group Size must be smaller than the total users");
+      setErrorMessage("Group Size must be smaller than the total users");
     }
   };
 
@@ -54,16 +56,18 @@ const GroupList = ({ users }) => {
           Group Size:
           <input
             data-testid="group-size-input"
-            type="text"
+            type="number"
+            min={1}
             value={groupSize}
             onChange={handleChange}
           />
         </label>
         <input type="submit" value="Submit" />
       </form>
-      {groups.map((group, index) => (
-        <Group key={index} id={index + 1} group={group} />
-      ))}
+      {errorMessage ||
+        groups.map((group, index) => (
+          <Group key={index} id={index + 1} group={group} />
+        ))}
     </div>
   );
 };
