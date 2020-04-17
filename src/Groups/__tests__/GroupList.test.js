@@ -1,5 +1,5 @@
 import React from "react";
-import { render, fireEvent, cleanup, waitFor } from "@testing-library/react";
+import { render, fireEvent, cleanup } from "@testing-library/react";
 import GroupList from "../GroupList";
 import { usersStub } from "../../mocks/UsersStub";
 
