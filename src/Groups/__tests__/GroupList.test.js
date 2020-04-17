@@ -27,4 +27,39 @@ describe("<GroupList />", () => {
     fireEvent.change(getByTestId("group-size-input"), event);
     expect(getByDisplayValue(event.target.value)).toBeTruthy();
   });
+
+  test("handle submit and create groups of users if the required group size is smaller than the total users", () => {
+    const event = { target: { value: "3" } };
+    const { getByText, queryByText, getByTestId } = render(
+      <GroupList users={usersStub} />
+    );
+
+    fireEvent.change(getByTestId("group-size-input"), event);
+    fireEvent.submit(getByText("Submit"));
+    expect(getByText("Group 1:")).toBeTruthy();
+    expect(getByText("Group 2:")).toBeTruthy();
+    expect(queryByText("Group 3:")).toBeNull();
+
+    expect(getByText(usersStub[0])).toBeTruthy();
+    expect(getByText(usersStub[1])).toBeTruthy();
+    expect(getByText(usersStub[2])).toBeTruthy();
+    expect(getByText(usersStub[3])).toBeTruthy();
+    expect(getByText(usersStub[4])).toBeTruthy();
+  });
+
+  test("handle submit and throw an alert if the required group size is smaller or equal the total users", () => {
+    const event = { target: { value: "10" } };
+    const { getByText, queryByText, getByTestId } = render(
+      <GroupList users={usersStub} />
+    );
+
+    fireEvent.change(getByTestId("group-size-input"), event);
+    fireEvent.submit(getByText("Submit"));
+
+    expect(
+      queryByText("Group Size must be smaller than the total users")
+    ).toBeTruthy();
+    expect(queryByText("Group 1:")).toBeNull();
+    expect(queryByText(usersStub[0])).toBeNull();
+  });
 });

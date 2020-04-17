@@ -1,1 +1,1 @@
-export const usersStub = ["Sam", "Raph", "Jamie"];
+export const usersStub = ["Sam", "Raph", "Jamie", "Ella", "Paul"];
