@@ -18,14 +18,13 @@ describe("<GroupList />", () => {
     expect(queryByText(usersStub[0])).toBeNull();
   });
 
-  // test("handle input change", () => {
-  //   const event = { target: { value: "3" } };
-  //   const mockOnChange = jest.fn();
-  //   const { getByText, getByTestId } = render(<GroupList users={usersStub} />);
+  test("handle input change", () => {
+    const event = { target: { value: "3" } };
+    const { getByDisplayValue, getByTestId } = render(
+      <GroupList users={usersStub} />
+    );
 
-  //   fireEvent.change(getByTestId("group-size-input"), event);
-
-  //   expect(mockOnChange).toHaveBeenCalledTimes(1);
-  //   expect(getByText(event.target.value)).toBeTruthy();
-  // });
+    fireEvent.change(getByTestId("group-size-input"), event);
+    expect(getByDisplayValue(event.target.value)).toBeTruthy();
+  });
 });
