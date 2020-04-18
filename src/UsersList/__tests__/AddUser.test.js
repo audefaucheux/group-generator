@@ -1,30 +1,42 @@
 import React from "react";
-import { render, fireEvent } from "@testing-library/react";
+import { render, fireEvent, cleanup } from "@testing-library/react";
 import AddUser from "../AddUser";
-import { userStub } from "../../mocks/UsersStub";
+import { usersStub } from "../../mocks/UsersStub";
+
+afterEach(cleanup);
 
 describe("<AddUser />", () => {
-  const mockSetGroups = jest.fn();
-  // const mockOnSubmit = jest.fn();
-
-  const { getByPlaceholderText } = render(
-    <AddUser users={userStub} setUsers={mockSetGroups} />
-  );
-  const addUserInput = getByPlaceholderText("Add User");
-  // const addUserButton = getByTestId("add-user-button");
-  const event = { target: { value: "Sam" } };
-
   test("renders add user input", () => {
-    expect(addUserInput).toBeTruthy();
+    const mockSetUsers = jest.fn();
+    const { getByPlaceholderText } = render(
+      <AddUser users={usersStub} setUsers={mockSetUsers} />
+    );
+
+    expect(getByPlaceholderText("Add User")).toBeTruthy();
   });
 
   test("handles input change", () => {
+    const event = { target: { value: "Ben" } };
+    const mockSetUsers = jest.fn();
+    const { getByPlaceholderText } = render(
+      <AddUser users={usersStub} setUsers={mockSetUsers} />
+    );
+    const addUserInput = getByPlaceholderText("Add User");
+
     fireEvent.change(addUserInput, event);
-    expect(addUserInput.value).toBe("Sam");
+    expect(addUserInput.value).toBe("Ben");
   });
 
-  // test("handles new user submission", () => {
-  //   fireEvent.click(addUserButton);
-  //   expect(mockOnSubmit).toHaveBeenCalled();
-  // });
+  test("handles new user submission", () => {
+    const event = { target: { value: "Ben" } };
+    const mockSetUsers = jest.fn();
+    const { getByText, getByPlaceholderText } = render(
+      <AddUser users={usersStub} setUsers={mockSetUsers} />
+    );
+    const addUserInput = getByPlaceholderText("Add User");
+
+    fireEvent.change(addUserInput, event);
+    fireEvent.submit(getByText("Submit"));
+    expect(event.target.value).toBeTruthy();
+  });
 });

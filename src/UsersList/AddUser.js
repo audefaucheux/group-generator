@@ -3,12 +3,12 @@ import React, { useState } from "react";
 const AddUser = ({ users, setUsers }) => {
   const [newUser, setNewUser] = useState("");
 
-  const handleChange = (event) => {
-    setNewUser(event.target.value);
+  const handleChange = (e) => {
+    setNewUser(e.target.value);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
     if (newUser !== "") {
       setUsers([...users, newUser]);
       setNewUser("");
@@ -23,7 +23,7 @@ const AddUser = ({ users, setUsers }) => {
         onChange={handleChange}
         placeholder="Add User"
       />
-      <input type="submit" value="Submit" data-testid="add-user-button" />
+      <input type="submit" value="Submit" />
     </form>
   );
 };
