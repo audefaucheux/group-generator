@@ -40,11 +40,7 @@ describe("<GroupList />", () => {
     expect(getByText("Group 2:")).toBeTruthy();
     expect(queryByText("Group 3:")).toBeNull();
 
-    expect(getByText(usersStub[0])).toBeTruthy();
-    expect(getByText(usersStub[1])).toBeTruthy();
-    expect(getByText(usersStub[2])).toBeTruthy();
-    expect(getByText(usersStub[3])).toBeTruthy();
-    expect(getByText(usersStub[4])).toBeTruthy();
+    usersStub.map((user) => expect(getByText(user)).toBeTruthy());
   });
 
   test("handle submit and throw an alert if the required group size is smaller or equal the total users", () => {
