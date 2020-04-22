@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import UsersList from "./UsersList/UsersList";
+import UserList from "./Users/UserList";
 import GroupList from "./Groups/GroupList";
 import "./App.css";
 
@@ -7,14 +7,13 @@ const App = () => {
   const [users, setUsers] = useState(["Aude", "John", "Sam", "Claire", "Amy"]);
 
   return (
-    <div>
+    <React.Fragment>
       <h1>Group Generator</h1>
-      <div>
-        <UsersList {...{ users, setUsers }} />
-        <br />
+      <div id="generator">
+        <UserList {...{ users, setUsers }} />
         <GroupList {...{ users }} />
       </div>
-    </div>
+    </React.Fragment>
   );
 };
 

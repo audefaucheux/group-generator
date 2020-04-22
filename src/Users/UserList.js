@@ -1,14 +1,15 @@
 import React from "react";
 import User from "./User";
 import AddUser from "./AddUser";
+import { UserListStyle } from "./styles/UserList.style";
 
-const UsersList = ({ users, setUsers }) => {
+const UserList = ({ users, setUsers }) => {
   const handleClickDelete = (id) => {
     setUsers(users.filter((user, index) => index !== id));
   };
 
   return (
-    <div>
+    <UserListStyle>
       {`Total users : ${users.length}`}
       {users.map((user, index) => (
         <User
@@ -19,8 +20,8 @@ const UsersList = ({ users, setUsers }) => {
         />
       ))}
       <AddUser {...{ users, setUsers }} />
-    </div>
+    </UserListStyle>
   );
 };
 
-export default UsersList;
+export default UserList;

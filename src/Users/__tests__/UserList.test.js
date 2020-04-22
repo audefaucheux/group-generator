@@ -1,24 +1,25 @@
 import React from "react";
 import { render, cleanup, fireEvent } from "@testing-library/react";
-import UsersList from "../UsersList";
+import UserList from "../UserList";
 import { usersStub } from "../../mocks/usersStub";
 
 afterEach(cleanup);
 
-describe("<UsersList />", () => {
+describe("<UserList />", () => {
   test("renders list of users", () => {
     const mockSetUsers = jest.fn();
     const { getByText } = render(
-      <UsersList users={usersStub} setUsers={mockSetUsers} />
+      <UserList users={usersStub} setUsers={mockSetUsers} />
     );
 
     usersStub.map((user) => expect(getByText(user)).toBeTruthy());
   });
 
+  // TO DO - add test to check if element was removed from the DOM
   test("deletes user on click", () => {
     const mockSetUsers = jest.fn();
     const { queryByTestId } = render(
-      <UsersList users={usersStub} setUsers={mockSetUsers} />
+      <UserList users={usersStub} setUsers={mockSetUsers} />
     );
 
     fireEvent.click(queryByTestId("delete-button-0"));
@@ -29,7 +30,7 @@ describe("<UsersList />", () => {
   //   const event = { target: { value: "Ben" } };
   //   const mockSetUsers = jest.fn();
   //   const { getByText, getByPlaceholderText } = render(
-  //     <UsersList users={usersStub} setUsers={mockSetUsers} />
+  //     <UserList users={usersStub} setUsers={mockSetUsers} />
   //   );
 
   //   fireEvent.change(getByPlaceholderText("Add User"), event);
