@@ -6,6 +6,7 @@ import "./App.css";
 const App = () => {
   const [users, setUsers] = useState(["Aude", "John", "Sam", "Claire", "Amy"]);
 
+  console.log("adding some stuff");
   return (
     <React.Fragment>
       <h1>Group Generator</h1>
