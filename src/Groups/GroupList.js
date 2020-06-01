@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Group from "./Group";
-import { GroupListStyle } from "./styles/GroupListStyle";
+import "./styles/GroupList.style.css";
 
 const GroupList = ({ users }) => {
   const [groupSize, setGroupSize] = useState(1);
@@ -51,7 +51,7 @@ const GroupList = ({ users }) => {
   };
 
   return (
-    <GroupListStyle>
+    <React.Fragment>
       <form onSubmit={handleSubmit}>
         <label>
           Group Size:
@@ -69,7 +69,7 @@ const GroupList = ({ users }) => {
         groups.map((group, index) => (
           <Group key={index} id={index + 1} group={group} />
         ))}
-    </GroupListStyle>
+    </React.Fragment>
   );
 };
 

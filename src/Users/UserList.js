@@ -1,7 +1,7 @@
 import React from "react";
 import User from "./User";
 import AddUser from "./AddUser";
-import { UserListStyle } from "./styles/UserList.style";
+import "./styles/UserList.style.css";
 
 const UserList = ({ users, setUsers }) => {
   const handleClickDelete = (id) => {
@@ -9,8 +9,10 @@ const UserList = ({ users, setUsers }) => {
   };
 
   return (
-    <UserListStyle>
-      {`Total users : ${users.length}`}
+    <React.Fragment>
+      <div className="total-users">
+        Total users: <span>{users.length}</span>
+      </div>
       {users.map((user, index) => (
         <User
           key={index}
@@ -20,7 +22,7 @@ const UserList = ({ users, setUsers }) => {
         />
       ))}
       <AddUser {...{ users, setUsers }} />
-    </UserListStyle>
+    </React.Fragment>
   );
 };
 
